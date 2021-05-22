@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../actions/cartActon';
+import { ADD_QUANTITY, ADD_TO_CART, SUB_QUANTITY } from '../actions/cartActionTypes';
 
 const initialState = {
   items: [
@@ -123,6 +123,34 @@ const cartReducer = (state = initialState, action) => {
     return {
       ...state,
       addedItems: [...state.addedItems, addedItem],
+      total: newTotal,
+    };
+  }
+  if (action.type === ADD_QUANTITY) {
+    const addedItem = state.items.find((item) => item.id === action.id);
+    addedItem.quantity += 1;
+    const newTotal = state.total + addedItem.price;
+    return {
+      ...state,
+      total: newTotal,
+    };
+  }
+  if (action.type === SUB_QUANTITY) {
+    const addedItem = state.items.find((item) => item.id === action.id);
+    // if the qt == 0 then it should be removed
+    if (addedItem.quantity === 1) {
+      const newItems = state.addedItems.filter((item) => item.id !== action.id);
+      const newTotal = state.total - addedItem.price;
+      return {
+        ...state,
+        addedItems: newItems,
+        total: newTotal,
+      };
+    }
+    addedItem.quantity -= 1;
+    const newTotal = state.total - addedItem.price;
+    return {
+      ...state,
       total: newTotal,
     };
   }

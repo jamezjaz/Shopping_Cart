@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import homeStyles from '../styles/homeStyles.module.css';
 import { addToCart } from '../actions/cartActon';
 
@@ -47,7 +48,9 @@ const Home = (props) => {
           </CardActionArea>
           <CardActions>
             <Button variant="contained" color="secondary" onClick={() => { handleClick(item.id); }}>
-              <AddIcon />
+              <Link to="/cart">
+                <AddIcon />
+              </Link>
             </Button>
           </CardActions>
         </Card>
