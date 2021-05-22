@@ -11,21 +11,16 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import homeStyles from '../styles/homeStyles.module.css';
-
-// const useStyles = makeStyles({
-//   root: {
-//     maxWidth: 345,
-//   },
-//   media: {
-//     height: 140,
-//   },
-// });
-
-// export default function MediaCard() {
-// const classes = useStyles();
+import { addToCart } from '../actions/cartActon';
 
 const Home = (props) => {
   const { items } = props;
+
+  const handleClick = (id) => {
+    addToCart(id);
+    console.log('Added to cart');
+  };
+
   return (
     <div className={homeStyles.container}>
       {items.map((item) => (
@@ -51,7 +46,7 @@ const Home = (props) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={() => { handleClick(item.id); }}>
               <AddIcon />
             </Button>
           </CardActions>
@@ -70,4 +65,8 @@ const mapStateToProps = (state) => ({
   items: state.items,
 });
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (id) => { dispatch(addToCart(id)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
