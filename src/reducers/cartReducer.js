@@ -114,7 +114,7 @@ const cartReducer = (state = initialState, action) => {
 
       // calculating the total
       const newTotal = state.total - (itemToRemove.price * itemToRemove.quantity);
-      console.log(itemToRemove);
+      // console.log(itemToRemove);
       return {
         ...state,
         addedItems: newItems,
