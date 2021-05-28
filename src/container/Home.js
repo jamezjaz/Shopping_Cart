@@ -15,11 +15,11 @@ import homeStyles from '../styles/homeStyles.module.css';
 import { addToCart } from '../actions/cartActon';
 
 const Home = (props) => {
-  const { items } = props;
+  const { items, addItemsToCart } = props;
 
   const handleClick = (id) => {
-    addToCart(id);
-    console.log('Added to cart');
+    addItemsToCart(id);
+    // console.log('Added to cart');
   };
 
   return (
@@ -48,7 +48,7 @@ const Home = (props) => {
           </CardActionArea>
           <CardActions>
             <Button variant="contained" color="secondary" onClick={() => { handleClick(item.id); }}>
-              <Link to="/cart">
+              <Link to="/">
                 <AddIcon />
               </Link>
             </Button>
@@ -62,6 +62,7 @@ const Home = (props) => {
 Home.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(
   )).isRequired,
+  addItemsToCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -69,7 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToCart: (id) => { dispatch(addToCart(id)); },
+  addItemsToCart: (id) => dispatch(addToCart(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

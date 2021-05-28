@@ -1,4 +1,11 @@
-import { ADD_QUANTITY, ADD_TO_CART, SUB_QUANTITY } from '../actions/cartActionTypes';
+import {
+  ADD_QUANTITY,
+  ADD_TO_CART,
+  REMOVE_ITEM,
+  SUB_QUANTITY,
+  ADD_SHIPPING,
+  SUB_SHIPPING,
+} from '../actions/cartActionTypes';
 
 const initialState = {
   items: [
@@ -77,37 +84,11 @@ const initialState = {
   total: 0,
 };
 
-// const cartReducer = (state = initialState, action) => {
-//   // find the item to add to cart
-//   const addedItem = state.items.find((item) => item.id === action.id);
-//   // check if the action id exists in the addedItems
-//   const existedItem = state.addedItem.find((item) => action.id === item.id);
-//   // calculating the total
-//   const newTotal = state.total + addedItem.price;
-//   switch (action.type) {
-//     case ADD_TO_CART:
-//       if (existedItem) {
-//         addedItem.quantity += 1;
-//         return {
-//           ...state,
-//           total: state.total + addedItem.price,
-//         };
-//       }
-//       addedItem.quantity = 1;
-//       return {
-//         ...state,
-//         addedItems: [...state.addedItems, addedItem],
-//         total: newTotal,
-//       };
-
-//     default:
-//       return state;
-//   }
-// };
-
 const cartReducer = (state = initialState, action) => {
+  // switch (action.type)
   if (action.type === ADD_TO_CART) {
     const addedItem = state.items.find((item) => item.id === action.id);
+    // console.log(addedItem);
     // check if the action id exists in the addedItems
     const existedItem = state.addedItems.find((item) => action.id === item.id);
     if (existedItem) {
@@ -123,6 +104,19 @@ const cartReducer = (state = initialState, action) => {
     return {
       ...state,
       addedItems: [...state.addedItems, addedItem],
+      total: newTotal,
+    };
+  }
+  if (action.type === REMOVE_ITEM) {
+    const itemToRemove = state.addedItems.find((item) => action.id === item.id);
+    const newItems = state.addedItems.filter((item) => action.id !== item.id);
+
+    // calculating the total
+    const newTotal = state.total - (itemToRemove.price * itemToRemove.quantity);
+    console.log(itemToRemove);
+    return {
+      ...state,
+      addedItems: newItems,
       total: newTotal,
     };
   }
@@ -152,6 +146,18 @@ const cartReducer = (state = initialState, action) => {
     return {
       ...state,
       total: newTotal,
+    };
+  }
+  if (action.type === ADD_SHIPPING) {
+    return {
+      ...state,
+      total: state.total + 5,
+    };
+  }
+  if (action.type === SUB_SHIPPING) {
+    return {
+      ...state,
+      total: state.total - 5,
     };
   }
   return state;

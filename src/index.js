@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
+import store from './store';
 import App from './container/App';
-import cartReducer from './reducers/cartReducer';
+// import cartReducer from './reducers/cartReducer';
 // import reportWebVitals from './reportWebVitals';
 
-const store = createStore(cartReducer);
+// const store = createStore(cartReducer);
 
 ReactDOM.render(
   <Provider store={store}>
