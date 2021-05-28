@@ -23,7 +23,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jamezjaz/Recipes">
-    <img src="./src/assets/recipeImg.jpg" alt="Logo" width="100" height="100">
+    <img src="./src/assets/cart-icon.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">Shopping Cart</h3>
@@ -58,7 +58,11 @@
   This is an e-commerce application. It's a shopping cart application built with React &amp; Redux. It's a single page application. Here, users can add and remove items from the cart. It also shows the total cost of items added to cart.
 
 ## Preview
-![Recipes](https://user-images.githubusercontent.com/57812000/109842050-493cb100-7c0f-11eb-9a93-21ee2511e433.png)
+- Index Page
+![shopping-cart-index](https://user-images.githubusercontent.com/57812000/120049022-5c78d600-bfde-11eb-9181-376d1a8d5615.png)
+
+- Cart Page
+![shopping-cart](https://user-images.githubusercontent.com/57812000/120049074-84683980-bfde-11eb-893c-91be10e8aa88.png)
 
 ## Live Demo
 It's deployed [HERE](https://jaz-shopping-cart.netlify.app/) on Netlify
