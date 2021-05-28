@@ -61,7 +61,7 @@
 ![Recipes](https://user-images.githubusercontent.com/57812000/109842050-493cb100-7c0f-11eb-9a93-21ee2511e433.png)
 
 ## Live Demo
-It's deployed [HERE]() on Netlify
+It's deployed [HERE](https://jaz-shopping-cart.netlify.app/) on Netlify
 
 ### Built With
 This project was built using these technologies.
