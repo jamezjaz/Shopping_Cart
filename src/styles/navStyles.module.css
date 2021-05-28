@@ -8,3 +8,8 @@
   list-style: none;
   margin: 5px;
 }
+
+.icons :hover {
+  background-color: rgb(221, 15, 87);
+  border-radius: 25%;
+}
