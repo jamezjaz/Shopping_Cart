@@ -7,6 +7,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { addQuantity, removeItem, subtractQuantity } from '../actions/cartActon';
 import DisplayTotal from '../presentational/DisplayTotal';
+import cartStyles from '../styles/cartStyles.module.css';
 
 class Cart extends Component {
   // to remove the item completely
@@ -38,9 +39,9 @@ class Cart extends Component {
         {addedItemsLen
           ? (
             addedItems.map((item) => (
-              <>
-                <div key={item.id}>
-                  <img src={item.img} alt={item.title} />
+              <div key={item.id}>
+                <div className={cartStyles.imgContainer}>
+                  <img src={item.img} alt={item.title} className={cartStyles.img} />
                 </div>
                 <div>
                   <span>{item.title}</span>
@@ -81,7 +82,7 @@ class Cart extends Component {
                 >
                   Remove
                 </Button>
-              </>
+              </div>
             ))
           )
           : (
